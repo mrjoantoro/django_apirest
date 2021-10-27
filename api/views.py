@@ -38,6 +38,8 @@ class ListUser(APIView):
             item = User.objects.get(id=id)
             serializer = UserSerializer(item)
             return Response({"status": "success", "data": serializer.data}, status=status.HTTP_200_OK)
+                        
+        # return Response({"status": "error", "data": serializer.errors}, status=status.HTTP_404_NOT_FOUND)
         
         items = User.objects.all()
         serializer = UserSerializer(items, many=True)
